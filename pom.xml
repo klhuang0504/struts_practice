@@ -22,6 +22,7 @@
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<struts2.version>2.5.14.1</struts2.version>
 		<log4j2.version>2.10.0</log4j2.version>
+		<project.name>Struts2HelloWorldExample</project.name>
 	</properties>
 
 	<dependencyManagement>
@@ -99,6 +100,14 @@
 					<version>2.8.2</version>
 				</plugin>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>org.eclipse.jetty</groupId>
 					<artifactId>jetty-maven-plugin</artifactId>
 					<version>9.4.7.v20170914</version>
@@ -114,6 +123,16 @@
 						</scanTargets>
 					</configuration>
 				</plugin>
+				<!-- <plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+					<url>http://127.0.0.1:8080/manager/text</url>
+					<username>tomcat</username>
+					<password>s3cret</password>
+					<server>tomcat7</server>
+					<path>/${project.name}</path>
+				</plugin> -->
 			</plugins>
 		</pluginManagement>
 	</build>
