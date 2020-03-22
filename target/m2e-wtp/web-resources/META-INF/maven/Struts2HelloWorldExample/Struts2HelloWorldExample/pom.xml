@@ -17,7 +17,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>1.7</java.version>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<struts2.version>2.5.14.1</struts2.version>
@@ -27,20 +27,11 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>org.apache.struts</groupId>
-				<artifactId>struts2-bom</artifactId>
-				<version>${struts2.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-bom</artifactId>
-				<version>${log4j2.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
+			<!-- <dependency> <groupId>org.apache.struts</groupId> <artifactId>struts2-bom</artifactId> 
+				<version>${struts2.version}</version> <type>pom</type> <scope>import</scope> 
+				</dependency> <dependency> <groupId>org.apache.logging.log4j</groupId> <artifactId>log4j-bom</artifactId> 
+				<version>${log4j2.version}</version> <scope>import</scope> <type>pom</type> 
+				</dependency> -->
 		</dependencies>
 	</dependencyManagement>
 
@@ -54,14 +45,22 @@
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-core</artifactId>
+			<version>2.5.22</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
+			<version>2.13.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
+			<version>2.13.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-resources-plugin</artifactId>
+			<version>3.0.1</version>
 		</dependency>
 	</dependencies>
 
@@ -75,13 +74,18 @@
 					<version>3.1.0</version>
 				</plugin>
 				<!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
-				<plugin>
+				<!-- <plugin>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.0.2</version>
-				</plugin>
+					<version>2.4.3</version>
+				</plugin> -->
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.0</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -99,14 +103,9 @@
 					<artifactId>maven-deploy-plugin</artifactId>
 					<version>2.8.2</version>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
-					</configuration>
-				</plugin>
+				<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
+					<configuration> <source>1.8</source> <target>1.8</target> </configuration> 
+					</plugin> -->
 				<plugin>
 					<groupId>org.eclipse.jetty</groupId>
 					<artifactId>jetty-maven-plugin</artifactId>
@@ -123,16 +122,10 @@
 						</scanTargets>
 					</configuration>
 				</plugin>
-				<!-- <plugin>
-					<groupId>org.apache.tomcat.maven</groupId>
-					<artifactId>tomcat7-maven-plugin</artifactId>
-					<version>2.2</version>
-					<url>http://127.0.0.1:8080/manager/text</url>
-					<username>tomcat</username>
-					<password>s3cret</password>
-					<server>tomcat7</server>
-					<path>/${project.name}</path>
-				</plugin> -->
+				<!-- <plugin> <groupId>org.apache.tomcat.maven</groupId> <artifactId>tomcat7-maven-plugin</artifactId> 
+					<version>2.2</version> <url>http://127.0.0.1:8080/manager/text</url> <username>tomcat</username> 
+					<password>s3cret</password> <server>tomcat7</server> <path>/${project.name}</path> 
+					</plugin> -->
 			</plugins>
 		</pluginManagement>
 	</build>
